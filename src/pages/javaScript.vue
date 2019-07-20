@@ -25,6 +25,7 @@
             </el-collapse-item>
             <el-collapse-item title="将原生事件绑定到组件" name="6">
                 <base-input v-on:keyup.native="onFocus" :label="baseInput" v-model="baseInput"></base-input>
+                <base-input-model v-model="baseInput">{{baseInput}}</base-input-model>
             </el-collapse-item>
             <el-collapse-item title="依赖注入 访问父级组件事件" name="7">
                 <get-father>
@@ -38,7 +39,8 @@
                 <base-input-noinherit v-model="baseInput" required placeholder="enter your name"></base-input-noinherit>
             </el-collapse-item>
             <el-collapse-item title="自定义组件的 v-model" name="10">
-                <base-checkbox v-model="lovingValue">{{lovingValue}}</base-checkbox>
+                <!-- <base-checkbox v-model="lovingValue">{{lovingValue}}</base-checkbox> -->
+                <base-checkbox-model v-model="lovingValue">{{lovingValue}}</base-checkbox-model>
                 {{new Date() | formatDT}}
             </el-collapse-item>
         </el-collapse>
@@ -52,10 +54,12 @@ import lifeCycle from './javascript/lifeCycle'
 import currentUser from './javascript/currentUser'
 import renderHeading from './javascript/render-heading'
 import baseInput from './javascript/base-input'
+import baseInputModel from './javascript/base-input-model'
 import getFather from './javascript/get-father'
 import getChild from './javascript/get-child'
 import baseInputNoinherit from './javascript/base-input-noinherit'
 import baseCheckbox from './javascript/base-checkbox'
+import baseCheckboxModel from './javascript/base-checkbox-model'
 export default {
     components: {
         nextTick,
@@ -64,10 +68,12 @@ export default {
         currentUser,
         renderHeading,
         baseInput,
+        baseInputModel,
         getChild,
         getFather,
         baseInputNoinherit,
-        baseCheckbox
+        baseCheckbox,
+        baseCheckboxModel
     },
     data: function() {
         return {
