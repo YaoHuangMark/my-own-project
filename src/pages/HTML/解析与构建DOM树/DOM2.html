@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>外部样式不会阻塞后续外部脚本的加载，但会阻塞外部脚本的执行</title>
+    <link href="http://udacity-crp.herokuapp.com/style.css?rtt=2" rel="stylesheet">
+</head>
+<body>
+    test
+    <script src="http://udacity-crp.herokuapp.com/time.js?rtt=1&a"></script>
+    <div id="result"></div>
+    <script>var end = +new Date;document.getElementById("result").innerHTML = end-start;</script>
+</body>
+</html>

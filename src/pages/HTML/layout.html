@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>左固定右填充布局</title>
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+        .flot_left {
+            width: 200px;
+            height: 100%;
+            float: left;
+            background-color: red;
+        }
+        .flot_right {
+            height: 100%;
+            margin-left: 200px;
+            background-color: green;
+        }
+        .absolute_left {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background-color: red;
+        }
+        .absolute_right {
+            margin-left: 200px;
+            height: 100%;
+            background-color: green;
+        }
+        .flot_bfc_left {
+            float: left;
+            height: 100%;
+            margin-right: 20px;
+            background-color: red;
+        }
+        .flot_bfc_right {
+            margin-left: 0;
+            overflow: auto;
+            height: 100%;
+            background-color: green;
+        }
+        .main {
+            width: 100%;
+            height: 100%;
+            display: flex;
+        }
+        .flex_left {
+            flex: 0 0 auto;
+            background-color: red;
+        }
+        .flex_right {
+            flex: 1 1 auto;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <!-- flot 布局 -->
+    <!-- <div class="flot_left"></div>
+    <div class="flot_right"></div> -->
+
+    <!-- absolute 使用了绝对定位，若是用在某个div中，需要更改父容器的position。没有清除浮动的方法，若左侧盒子高于右侧盒子，就会超出父容器的高度。因此只能通过设置父容器的min-height来放置这种情况-->
+    <!-- <div class="absolute_left"></div>
+    <div class="absolute_right"></div> -->
+
+    <!-- flot + BFC 这个方案同样是利用了左侧浮动，但是右侧盒子通过overflow: auto;形成了BFC，因此右侧盒子不会与浮动的元素重叠  缺点：父元素需要清除浮动-->
+    <!-- <div class="flot_bfc_left">flot + BFC</div>
+    <div class="flot_bfc_right"></div> -->
+
+    <div class="main">
+        <div class="flex_left">flex_left</div>
+        <div class="flex_right">flex_right</div>
+    </div>
+</body>
+</html>

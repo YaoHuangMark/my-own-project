@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .aa {
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translateX(-50px) translateY(-50px);
+        }
+    </style>
+</head>
+<body>
+    <div class="aa">
+        aaaa
+    </div>
+    <script>
+        // class
+        class Point {
+            constructor(x,y) {
+                this.x = x;
+                this.y = y;
+            }
+            toString() {
+                return '(' + this.x + ',' + this.y + ')'
+            }
+        }    
+        let point = new Point()
+        console.log(point.constructor === Point.prototype.constructor)
+        console.log(Point.prototype.constructor)
+        console.log(point.__proto__.constructor)
+        console.log(Object.getPrototypeOf(point).constructor)
+
+        // 类的内部所有定义的方法，都是不可枚举的
+        console.log(Object.keys(Point.prototype))
+        // ES5 的写法
+        var Point2 = function() {
+
+        }
+        Point2.prototype.person = {
+            name: 'HY'
+        }
+        Point2.prototype.toString = function() {
+
+        }
+        console.log(Object.keys(Point2.prototype))
+
+        // array.apply
+        var aaa = Object.keys(Array.apply(null,{length:12}));
+        var arr = Object.keys(Array.apply(null, {length:12})).map(function(item){
+            return +item;
+        });
+        console.log(arr);
+        // array.from
+        var arr2 = Array.from({length:12}, (v,k) => {
+            console.log(v);
+            console.log(k);
+            return k
+        });
+        console.log(arr2);
+        // 数组去重合并
+        var v1 = [1,2,3];
+        var v2 = [2,3,4];
+        var no_arr = [].concat(v1,v2);
+        console.log(no_arr)
+        console.log(Array.from(new Set(no_arr)))
+        console.log([...new Set(no_arr)])
+    </script>
+</body>
+</html>

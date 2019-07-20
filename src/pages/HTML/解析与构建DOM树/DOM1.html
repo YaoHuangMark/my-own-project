@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>外部样式会阻塞后续脚本执行，直到外部样式加载并解析完毕</title>
+    <script>var start = +new Date();</script>
+    <link href="http://udacity-crp.herokuapp.com/style.css?rtt=2" rel="stylesheet">
+</head>
+<body>
+    <span id="result"></span>
+    <script>
+        var end = +new Date();
+        document.getElementById('result').innerHTML = (end - start)
+    </script>
+</body>
+</html>
